@@ -1,0 +1,257 @@
+<div
+  style="border: 20px; background-color: #e9e9e9; border-radius: 10px"
+  class="row"
+>
+  <div class="col-xs-12">
+    <form [formGroup]="eventForm" (ngSubmit)="onSubmit()">
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <label style="margin-top: 10px" for="name">Nombre del Evento</label>
+            <input
+              placeholder="Inserte el nombre aqui.."
+              style="width: 280px"
+              type="text"
+              id="name"
+              formControlName="name"
+              class="form-control"
+              required
+            />
+          </div>
+        </div>
+      </div>
+
+      <select
+        required
+        style="width: 280px; margin-top: 10px"
+        class="form-control"
+        name="country"
+        id="country"
+        formControlName="country"
+      >
+        <option value="" disabled selected>Select Country</option>
+        <option *ngFor="let country of countries" [value]="country.name">
+          {{ country.name }}
+        </option>
+      </select>
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <label style="margin-top: 10px" for="location">Locación</label>
+            <input
+              placeholder="Inserte la locación aqui.."
+              style="width: 480px"
+              type="text"
+              id="location"
+              formControlName="location"
+              class="form-control"
+              required
+            />
+          </div>
+        </div>
+      </div>
+      <hr />
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <label style="margin-top: 10px" for="initial_date"
+              >Fecha de Inicio</label
+            >
+            <input
+              min="{{ todayString }}"
+              style="width: 180px"
+              type="date"
+              id="initial_date"
+              formControlName="initial_date"
+              class="form-control"
+              required
+            />
+          </div>
+        </div>
+        <div class="col-md-5">
+          <div class="form-group">
+            <label style="margin-top: 10px" for="final_date"
+              >Fecha de Finalización</label
+            >
+            <input
+              min="{{ todayString }}"
+              style="width: 180px"
+              type="date"
+              id="final_date"
+              formControlName="final_date"
+              class="form-control"
+              required
+            />
+          </div>
+        </div>
+      </div>
+      <div style="margin-top: 5px">
+        Coloque las horas en hora militar (10:00-11:00-12:00-13:00). Las horas
+        se tomarán como PST
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <label style="margin-top: 10px" for="initial_time"
+              >Hora de Inicio</label
+            >
+            <input
+              style="width: 180px"
+              min="0"
+              max="23"
+              type="time"
+              id="initial_time"
+              formControlName="initial_time"
+              class="form-control"
+              required
+            />
+          </div>
+        </div>
+
+        <div class="col-md-5">
+          <div class="form-group">
+            <label style="margin-top: 10px" for="final_time"
+              >Hora de Finalización</label
+            >
+            <input
+              style="width: 180px"
+              min="0"
+              max="23"
+              type="time"
+              id="final_time"
+              formControlName="final_time"
+              class="form-control"
+              required
+            />
+          </div>
+        </div>
+      </div>
+
+      <div style="margin-top: 10px" class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <input
+              style="width: 280px"
+              placeholder="Inserte el código del evento.."
+              type="number"
+              id="event_code"
+              formControlName="event_code"
+              class="form-control"
+              required
+            />
+          </div>
+        </div>
+
+        <div class="col-md-5">
+          <div class="form-group">
+            <input
+              style="width: 220px"
+              placeholder="Nombre del cliente"
+              type="text"
+              id="client_name"
+              formControlName="client_name"
+              class="form-control"
+            />
+          </div>
+        </div>
+      </div>
+      <hr />
+      <div style="margin-top: 15px">Configuración de reglas básicas</div>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <label style="margin-top: 10px" for="board_rows"
+              ># Filas del Tablero</label
+            >
+            <input
+              style="width: 100px"
+              min="10"
+              max="100"
+              type="number"
+              id="board_rows"
+              formControlName="board_rows"
+              class="form-control"
+              required
+            />
+          </div>
+        </div>
+
+        <div class="col-md-5">
+          <div class="form-group">
+            <label style="margin-top: 10px" for="board_columns"
+              ># de Columnas del Tablero</label
+            >
+            <input
+              style="width: 100px"
+              min="10"
+              max="100"
+              type="number"
+              id="board_columns"
+              formControlName="board_columns"
+              class="form-control"
+              required
+            />
+          </div>
+        </div>
+      </div>
+      <div>Para que la partida sea multijugador seleccionar el checkbox</div>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <label style="margin-top: 10px" for="shooting_time"
+              >Tiempo de disparo (en segundos)</label
+            >
+            <input
+              style="width: 100px"
+              min="30"
+              max="300"
+              type="number"
+              id="shooting_time"
+              formControlName="shooting_time"
+              class="form-control"
+              required
+            />
+          </div>
+        </div>
+
+        <div style="margin-top: 40px" class="col-md-5">
+          <div class="form-group">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              value=""
+              id="multiplayer"
+              formControlName="multiplayer"
+            />
+            <label
+              style="margin-left: 15px"
+              class="form-check-label"
+              for="multiplayer"
+            >
+              Multijugador
+            </label>
+          </div>
+        </div>
+      </div>
+      <div style="margin-bottom: 20px; margin-top: 20px" class="row">
+        <div class="col-xs-12">
+          <button
+            type="submit"
+            class="btn btn-success"
+            [disabled]="!eventForm.valid"
+          >
+            Guardar
+          </button>
+          <button
+            style="margin-left: 20px"
+            type="button"
+            class="btn btn-danger"
+            (click)="onCancel()"
+          >
+            Cancelar
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
