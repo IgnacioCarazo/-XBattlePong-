@@ -58,8 +58,7 @@ export class EventsEditComponent implements OnInit {
       //this.dataStorageService.storeSong(this.cancionForm.value);
     }
     this.dataStorageService.storeEvent(this.eventForm.value);
-
-
+    this.eventService.addEvent(this.eventForm.value);
     this.onCancel();
   }
 
@@ -131,7 +130,7 @@ export class EventsEditComponent implements OnInit {
       country: new FormControl(country, Validators.required),
       location: new FormControl(location, Validators.required),
       multiplayer: new FormControl(multiplayer, Validators.required),
-      client_name: new FormControl(client_name, Validators.required),
+      client_name: new FormControl(client_name),
       shooting_time: new FormControl(shooting_time, Validators.required),
 
       

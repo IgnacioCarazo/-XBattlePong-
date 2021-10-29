@@ -50,7 +50,15 @@ export class EventsDetailComponent implements OnInit {
    * @description Deletes the current event.
    */
   onDeleteEvent() {
+    
+    
     this.router.navigate(['/events']);
     this.dataStorageService.deleteEvent(this.event.event_key);
+    this.dataStorageService.fetchEvents().
+      subscribe( events => {
+          this.eventService.setEvents(events);
+          location.reload();
+      });
+    
   }
 }

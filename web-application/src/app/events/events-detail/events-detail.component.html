@@ -2,6 +2,17 @@
   <div class="row" style="margin-top: 10px">
     <div class="col-xs-12">
       <h1>{{ event.name }}</h1>
+      <h5>Codigo de creación: {{event.event_code}}</h5>
+    </div>
+  </div>
+  <div style="margin-bottom: 50px" class="row">
+    <div class="col-md-6">
+      <h5>Ubicación:</h5>
+      {{ event.location }}
+    </div>
+    <div class="col-md-6">
+      <h5>País:</h5>
+      {{ event.country }}
     </div>
   </div>
   <div style="margin-bottom: 50px" class="row">

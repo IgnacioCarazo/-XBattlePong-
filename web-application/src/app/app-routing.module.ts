@@ -3,26 +3,28 @@ import { RouterModule, Routes } from '@angular/router';
 import { EventsDetailComponent } from './events/events-detail/events-detail.component';
 import { EventsEditComponent } from './events/events-edit/events-edit.component';
 import { EventsComponent } from './events/events.component';
+import { LoginComponent } from './login/login.component';
+import { EventsResolver } from './shared/event-resolver.service';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'events', pathMatch: 'full' },
-  { path: 'events', component: EventsComponent },
+  { path: '', redirectTo: 'login', pathMatch: 'full' },
+  { path: 'login', component: LoginComponent },
 
   {
     path: 'events',
     component: EventsComponent,
-   //resolve: [CancionResolverService],
+   resolve: [EventsResolver],
     children: [
       { path: 'new', component: EventsEditComponent },
       {
         path: ':id',
         component: EventsDetailComponent,
-        //resolve: [CancionResolverService],
+        resolve: [EventsResolver],
       },
       {
         path: ':id/edit',
         component: EventsEditComponent,
-        //resolve: [CancionResolverService],
+        resolve: [EventsResolver],
       },
     ],
   },
