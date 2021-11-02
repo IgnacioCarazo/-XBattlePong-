@@ -1,0 +1,62 @@
+<div class="row">
+  <div class="row" style="margin-top: 10px">
+    <div class="col-xs-12">
+      <h1>Partida del evento {{ match.event_name }}</h1>
+    </div>
+  </div>
+  <div style="margin-bottom: 50px" class="row">
+    <div class="col-md-6">
+      <h5>Ubicación:</h5>
+      {{ match.location }}
+    </div>
+    <div class="col-md-6">
+      <h5>País:</h5>
+      {{ match.country }}
+    </div>
+  </div>
+  <div style="margin-bottom: 50px" class="row">
+    <div class="col-md-6">
+      <h5>Fecha de inicio:</h5>
+      {{ match.initial_date }}
+    </div>
+    <div class="col-md-6">
+      <h5>Fecha de finalización:</h5>
+      {{ match.final_date }}
+    </div>
+  </div>
+  <div style="margin-bottom: 50px" class="row">
+    <div class="col-md-6">
+      <h5>Hora de inicio:</h5>
+      {{ match.initial_time }}
+    </div>
+    <div class="col-md-6">
+      <h5>Hora de finalización:</h5>
+      {{ match.final_time }}
+    </div>
+  </div>
+  <h4 style="margin-top: 10px; margin-bottom: 20px">
+    Configuraciones del juego
+  </h4>
+  <div style="margin-bottom: 50px" class="row">
+    <div class="col-md-6">
+      <h5>Tamaño del tablero:</h5>
+      {{ match.board_rows }} X {{ match.board_columns }}
+    </div>
+    <div class="col-md-6">
+      <h5>Tiempo de Disparo:</h5>
+      {{ match.shooting_time }}s
+    </div>
+  </div>
+  <div style="margin-bottom: 50px" class="row">
+    <div class="col-md-6">
+      <h5>Llave única:</h5>
+      {{ match.event_key }}
+    </div>
+    <div class="col-md-6">
+      <h5>Modalidad:</h5>
+      {{ mode }}
+    </div>
+  </div>
+
+  <hr />
+</div>

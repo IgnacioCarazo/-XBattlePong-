@@ -1,0 +1,23 @@
+<div class="row">
+  <div class="col-md-9">
+    <input placeholder="Inserte la llave única del evento" type="text" style="width: 250px;" />
+  </div>
+  <div class="col-md-3">
+    <button class="btn btn-success" (click)="searchMatches()">
+      Buscar
+    </button>
+  </div>
+  <div class="col-xs-12">
+    <button class="btn btn-success" (click)="onNewMatch()">Nueva Partida</button>
+  </div>
+</div>
+<hr />
+<div class="row">
+  <div class="col-xs-12">
+    <app-matches-item
+      *ngFor="let matchEl of matches; let i = index"
+      [match]="matchEl"
+      [index]="i"
+    ></app-matches-item>
+  </div>
+</div>

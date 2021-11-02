@@ -13,6 +13,13 @@ import { HeaderComponent } from './header/header.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import { EventService } from './services/event.service';
+import { MatchesComponent } from './matches/matches.component';
+import { MatchesListComponent } from './matches/matches-list/matches-list.component';
+import { MatchesItemComponent } from './matches/matches-list/matches-item/matches-item.component';
+import { MatchesDetailComponent } from './matches/matches-detail/matches-detail.component';
+import { MatchesEditComponent } from './matches/matches-edit/matches-edit.component';
+import { MatchService } from './services/match.service';
+import { UserService } from './services/user.service';
 
 
 @NgModule({
@@ -24,7 +31,12 @@ import { EventService } from './services/event.service';
     EventsListComponent,
     EventsEditComponent,
     EventsItemComponent,
-    HeaderComponent
+    HeaderComponent,
+    MatchesComponent,
+    MatchesListComponent,
+    MatchesItemComponent,
+    MatchesDetailComponent,
+    MatchesEditComponent
   ],
   imports: [
     BrowserModule,
@@ -33,7 +45,7 @@ import { EventService } from './services/event.service';
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [EventService],
+  providers: [EventService, MatchService, UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

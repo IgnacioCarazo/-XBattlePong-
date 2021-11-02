@@ -1,3 +1,5 @@
+import { Ship } from "./ship.model";
+
 export class ClassEvent {
     public number: number;
     public event_key: string;
@@ -14,4 +16,6 @@ export class ClassEvent {
     public multiplayer: number;
     public client_name: string;
     public shooting_time: number;
+    public shipsAvailable: Ship[]; // Naves disponibles para colocar en el tablero
+
   }
