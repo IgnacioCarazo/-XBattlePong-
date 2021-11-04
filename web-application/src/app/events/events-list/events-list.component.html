@@ -1,0 +1,15 @@
+<div class="row">
+    <div class="col-xs-12">
+      <button class="btn btn-success" (click)="onNewEvent()">Nuevo Evento</button>
+
+    </div>
+  </div>
+  <hr>
+  <div class="row">
+    <div class="col-xs-12">
+      <app-events-item
+        *ngFor="let eventEl of events; let i = index"
+        [event]="eventEl"
+        [index]="i"></app-events-item>
+    </div>
+  </div>

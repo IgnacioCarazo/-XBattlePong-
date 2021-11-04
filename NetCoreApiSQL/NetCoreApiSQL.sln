@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31205.134
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NetCoreApiSQL", "NetCoreApiSQL\NetCoreApiSQL.csproj", "{32E9F356-7366-432E-A999-4DB26F05685D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiModel", "ApiModel\ApiModel.csproj", "{50C5B028-1469-4E4A-A959-21ED63DC5361}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiData", "ApiData\ApiData.csproj", "{9415549D-BCFD-4737-B306-BA332A322DD8}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{32E9F356-7366-432E-A999-4DB26F05685D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{32E9F356-7366-432E-A999-4DB26F05685D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{32E9F356-7366-432E-A999-4DB26F05685D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{32E9F356-7366-432E-A999-4DB26F05685D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{50C5B028-1469-4E4A-A959-21ED63DC5361}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{50C5B028-1469-4E4A-A959-21ED63DC5361}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{50C5B028-1469-4E4A-A959-21ED63DC5361}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{50C5B028-1469-4E4A-A959-21ED63DC5361}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9415549D-BCFD-4737-B306-BA332A322DD8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9415549D-BCFD-4737-B306-BA332A322DD8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9415549D-BCFD-4737-B306-BA332A322DD8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9415549D-BCFD-4737-B306-BA332A322DD8}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A02BB9E2-5CE7-4ED8-95B3-C194F9828981}
+	EndGlobalSection
+EndGlobal

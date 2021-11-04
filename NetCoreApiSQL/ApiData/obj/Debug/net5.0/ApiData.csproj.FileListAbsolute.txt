@@ -1,0 +1,5 @@
+C:\Users\mario\Desktop\-XBattlePong-\NetCoreApiSQL\ApiData\bin\Debug\net5.0\ApiModel.dll
+C:\Users\mario\Desktop\-XBattlePong-\NetCoreApiSQL\ApiData\obj\Debug\net5.0\ApiData.csprojAssemblyReference.cache
+C:\Users\mario\Desktop\-XBattlePong-\NetCoreApiSQL\ApiData\obj\Debug\net5.0\ApiData.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\mario\Desktop\-XBattlePong-\NetCoreApiSQL\ApiData\obj\Debug\net5.0\ApiData.AssemblyInfoInputs.cache
+C:\Users\mario\Desktop\-XBattlePong-\NetCoreApiSQL\ApiData\obj\Debug\net5.0\ApiData.AssemblyInfo.cs

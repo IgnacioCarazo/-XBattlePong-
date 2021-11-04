@@ -1,0 +1,72 @@
+<div class="row">
+  <div class="row" style="margin-top: 10px">
+    <div class="col-xs-12">
+      <h1>{{ event.name }}</h1>
+      <h5>Codigo de creación: {{event.event_code}}</h5>
+    </div>
+  </div>
+  <div style="margin-bottom: 50px" class="row">
+    <div class="col-md-6">
+      <h5>Ubicación:</h5>
+      {{ event.location }}
+    </div>
+    <div class="col-md-6">
+      <h5>País:</h5>
+      {{ event.country }}
+    </div>
+  </div>
+  <div style="margin-bottom: 50px" class="row">
+    <div class="col-md-6">
+      <h5>Fecha de inicio:</h5>
+      {{ event.initial_date }}
+    </div>
+    <div class="col-md-6">
+      <h5>Fecha de finalización:</h5>
+      {{ event.final_date }}
+    </div>
+  </div>
+  <div style="margin-bottom: 50px" class="row">
+    <div class="col-md-6">
+      <h5>Hora de inicio:</h5>
+      {{ event.initial_time }}
+    </div>
+    <div class="col-md-6">
+      <h5>Hora de finalización:</h5>
+      {{ event.final_time }}
+    </div>
+  </div>
+  <h4 style="margin-top: 10px; margin-bottom: 20px;">Configuraciones del juego</h4>
+  <div style="margin-bottom: 50px" class="row">
+    <div class="col-md-6">
+      <h5>Tamaño del tablero:</h5>
+      {{ event.board_rows }} X {{event.board_columns}}
+    </div>
+    <div class="col-md-6">
+      <h5>Tiempo de Disparo:</h5>
+      {{ event.shooting_time }}s
+    </div>
+  </div>
+  <div style="margin-bottom: 50px" class="row">
+    <div class="col-md-6">
+      <h5>Llave única:</h5>
+      {{ event.event_key }}
+    </div>
+    <div class="col-md-6">
+      <h5>Modalidad:</h5>
+      {{ mode }}
+    </div>
+  </div>
+
+  <div style="margin-top: 50px" class="row">
+    <div style="justify-content: flex-end" class="col-xs-12">
+      <button
+        class="btn btn-danger"
+        (click)="onDeleteEvent()"
+      >
+        Eliminar Evento
+      </button>
+    </div>
+  </div>
+
+  <hr />
+</div>
