@@ -12,7 +12,7 @@ using System.Security.Cryptography;
 namespace ApiData.Repositories
 {
     /// <summary>
-    /// Implementacion y logica de la interfaz IEvent propio de la entidad Evento
+    /// Implementacion y logica de la interfaz IEvent propio de la entidad Evento, manejo de data en sql CRUD
     /// </summary>
     public class REvent : IEvent
     {
@@ -174,12 +174,21 @@ namespace ApiData.Repositories
         {
             var db = dbConnection();
 
+     
             var sql = @"
                         DELETE 
                         FROM ""Event"" 
                         WHERE event_key = @event_key";
 
-            var result = await db.ExecuteAsync(sql, new {event_key = event_key });
+            var sql2 = @"
+                        DELETE 
+                        FROM ""Match"" 
+                        WHERE event_key = @event_key";
+
+
+            var result = await db.ExecuteAsync(sql, new { event_key = event_key });
+
+            await db.ExecuteAsync(sql2, new { event_key = event_key });
 
             return result > 0;
         }
