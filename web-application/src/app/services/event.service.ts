@@ -26,8 +26,6 @@ export class EventService {
   */
    setEvents(events: ClassEvent[]) {
     this.events = events;
-    this.event = events[0];
-    console.log(this.event)
     this.eventsChanged.next(this.events.slice());
   }
 
@@ -59,6 +57,20 @@ export class EventService {
    */
   getEvents() {
     return this.events.slice();
+  }
+
+  /**
+   * @name searchEvent()
+   * @description  It updates the value of a event of this service events array.
+   */
+   searchEvent(event_key: string) {
+     for (let event of this.events) {
+       if (event.event_key === event_key) {
+         this.event = event;
+         return true
+       }
+     }
+     return false;
   }
 
   /**

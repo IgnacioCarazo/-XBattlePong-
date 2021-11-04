@@ -1,37 +1,37 @@
 <div class="row">
   <div class="row" style="margin-top: 10px">
     <div class="col-xs-12">
-      <h1>Partida del evento {{ match.event_name }}</h1>
+      <h1>Partida del evento {{ event.name }}</h1>
     </div>
   </div>
   <div style="margin-bottom: 50px" class="row">
     <div class="col-md-6">
       <h5>Ubicación:</h5>
-      {{ match.location }}
+      {{ event.location }}
     </div>
     <div class="col-md-6">
       <h5>País:</h5>
-      {{ match.country }}
+      {{ event.country }}
     </div>
   </div>
   <div style="margin-bottom: 50px" class="row">
     <div class="col-md-6">
       <h5>Fecha de inicio:</h5>
-      {{ match.initial_date }}
+      {{ event.initial_date }}
     </div>
     <div class="col-md-6">
       <h5>Fecha de finalización:</h5>
-      {{ match.final_date }}
+      {{ event.final_date }}
     </div>
   </div>
   <div style="margin-bottom: 50px" class="row">
     <div class="col-md-6">
       <h5>Hora de inicio:</h5>
-      {{ match.initial_time }}
+      {{ event.initial_time }}
     </div>
     <div class="col-md-6">
       <h5>Hora de finalización:</h5>
-      {{ match.final_time }}
+      {{ event.final_time }}
     </div>
   </div>
   <h4 style="margin-top: 10px; margin-bottom: 20px">
@@ -40,23 +40,32 @@
   <div style="margin-bottom: 50px" class="row">
     <div class="col-md-6">
       <h5>Tamaño del tablero:</h5>
-      {{ match.board_rows }} X {{ match.board_columns }}
+      {{ event.board_rows }} X {{ event.board_columns }}
     </div>
     <div class="col-md-6">
       <h5>Tiempo de Disparo:</h5>
-      {{ match.shooting_time }}s
+      {{ event.shooting_time }}s
     </div>
   </div>
   <div style="margin-bottom: 50px" class="row">
     <div class="col-md-6">
-      <h5>Llave única:</h5>
-      {{ match.event_key }}
+      <h5>Llave única del evento:</h5>
+      {{ event.event_key }}
     </div>
     <div class="col-md-6">
       <h5>Modalidad:</h5>
       {{ mode }}
     </div>
   </div>
-
+  <div style="margin-bottom: 50px" class="row">
+    <div class="col-md-6">
+      <h5>Jugador 1:</h5>
+      {{ match.player1 }}
+    </div>
+    <div class="col-md-6">
+      <h5>Jugador 2:</h5>
+      {{ match.player2 }}
+    </div>
+  </div>
   <hr />
 </div>
