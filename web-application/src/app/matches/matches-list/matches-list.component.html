@@ -1,0 +1,41 @@
+<div *ngIf="this.event_found" class="row" style="margin-top: 10px">
+  <div class="col-xs-12">
+    <h1>Evento: {{ event.name }}</h1>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-9">
+    <form (submit)="onSubmit(event_key.value)">
+      <input
+        #event_key
+        placeholder="Inserte la llave única del evento"
+        type="text"
+        style="width: 250px"
+      />
+    </form>
+  </div>
+  <div class="col-md-3">
+    <button class="btn btn-success" (click)="onSubmit(event_key.value)">
+      Buscar
+    </button>
+  </div>
+  <div class="col-xs-12">
+    <button
+      *ngIf="this.event_found"
+      class="btn btn-success"
+      (click)="onNewMatch()"
+    >
+      Nueva Partida
+    </button>
+  </div>
+</div>
+<hr />
+<div class="row">
+  <div class="col-xs-12">
+    <app-matches-item
+      *ngFor="let matchEl of matches; let i = index"
+      [match]="matchEl"
+      [index]="i"
+    ></app-matches-item>
+  </div>
+</div>

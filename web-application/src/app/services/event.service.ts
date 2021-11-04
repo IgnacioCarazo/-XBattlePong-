@@ -60,12 +60,35 @@ export class EventService {
   }
 
   /**
+   * @name searchEvent()
+   * @description  It updates the value of a event of this service events array.
+   */
+   searchEvent(event_key: string) {
+     for (let event of this.events) {
+       if (event.event_key === event_key) {
+         this.event = event;
+         return true
+       }
+     }
+     return false;
+  }
+
+  /**
    * @name getEvent()
    * @description It searches a event by its index
    * @returns {ClassEvent} A cancion
    */
   getEvent(index: number) {
     return this.events[index];
+  }
+
+  /**
+   * @name getCurrentEvent()
+   * @description It searches a event by its index
+   * @returns {ClassEvent} A cancion
+   */
+   getCurrentEvent() {
+    return this.event;
   }
 
   /**

@@ -14,8 +14,6 @@ export class EventsComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    //this.dataStorageService.fetchEvents().subscribe((events) => {
-      //this.eventService.setEvents(events);
-    //});
+    
   }
 }
