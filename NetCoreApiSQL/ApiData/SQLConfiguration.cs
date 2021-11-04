@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace ApiData
 {
+    /// <summary>
+    /// clase que almacena la conexion con la base de datos
+    /// </summary>
     public class SQLConfiguration
     {
 

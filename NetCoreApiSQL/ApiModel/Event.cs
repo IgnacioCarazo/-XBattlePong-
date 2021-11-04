@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace ApiModel
 {
+    /// <summary>
+    /// Entidad evento con sus respectivos atributos
+    /// </summary>
     public class Event
     {
         public int number { get; set; }
