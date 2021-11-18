@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace ApiModel
 {
+    /// <summary>
+    /// Entidad Match con sus respectivos atributos
+    /// </summary>
     public class Match
     {
         public string event_key { get; set; }

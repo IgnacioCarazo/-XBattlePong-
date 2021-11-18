@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Security.Cryptography;
 
+
 namespace ApiData.Repositories
 {
     /// <summary>
@@ -132,13 +133,7 @@ namespace ApiData.Repositories
         {
             var db = dbConnection();
 
-            Random random = new Random();
-            const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-            var key = new string(Enumerable.Repeat(chars, 6).Select(s => s[random.Next(s.Length)]).ToArray());
-            
-            evnt.event_key = key;
-
-
+         
             var sql = @"
                         INSERT INTO ""Event"" (event_key, event_code, name, initial_date, final_date, initial_time, final_time, board_columns, board_rows, country, location, multiplayer, client_name, shooting_time)
                         VALUES (@event_key, @event_code, @name, @initial_date, @final_date, @initial_time, @final_time, @board_columns, @board_rows, @country, @location, @multiplayer, @client_name, @shooting_time) ";
@@ -189,6 +184,24 @@ namespace ApiData.Repositories
             var result = await db.ExecuteAsync(sql, new { event_key = event_key });
 
             await db.ExecuteAsync(sql2, new { event_key = event_key });
+
+            return result > 0;
+        }
+
+        public async Task<bool> InsertEventShip(EventShip eventShip)
+        {
+            var db = dbConnection();
+
+            var sql = @"
+                        INSERT INTO ""Ship"" (event_key, ship_name)
+                        VALUES (@event_key, @ship_name) ";
+
+            var result = await db.ExecuteAsync(sql,
+                new
+                {
+                    eventShip.event_key,
+                    eventShip.ship_name
+                });
 
             return result > 0;
         }

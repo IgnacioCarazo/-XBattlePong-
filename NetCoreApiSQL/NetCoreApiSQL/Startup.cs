@@ -36,8 +36,10 @@ namespace NetCoreApiSQL
             var SQLConnectionConfiguration = new SQLConfiguration(Configuration.GetConnectionString("SQLConnection"));
             services.AddSingleton(SQLConnectionConfiguration);
 
+            
             services.AddScoped<IEvent, REvent>();
-
+            services.AddScoped<IMatch, RMatch>();
+            services.AddScoped<IShip, RShip>();
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {

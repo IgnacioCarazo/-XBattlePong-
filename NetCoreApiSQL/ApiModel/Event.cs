@@ -26,5 +26,7 @@ namespace ApiModel
         public int multiplayer { get; set; }
         public string client_name { get; set; }
         public int shooting_time { get; set; }
+
+        public Ship[] shipAvailable { get; set; }
     }
 }

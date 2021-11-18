@@ -6,6 +6,10 @@ using System.Threading.Tasks;
 
 namespace ApiModel
 {
+
+    /// <summary>
+    /// Entidad ship con sus respectivos atributos
+    /// </summary>
     public class Ship
     {
         public string name { get; set; }
