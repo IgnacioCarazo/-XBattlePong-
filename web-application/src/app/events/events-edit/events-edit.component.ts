@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Params, Router } from '@angular/router';
+import { Ship } from 'src/app/models/ship.model';
 import { EventService } from 'src/app/services/event.service';
+import { ShipService } from 'src/app/services/ship.service';
 import { countries } from 'src/app/shared/country-data-store';
 import { DataStorageService } from 'src/app/shared/data-storage.service';
 
@@ -14,24 +16,24 @@ export class EventsEditComponent implements OnInit {
   id: number;
   editMode = false;
   eventForm: FormGroup;
-  public countries:any = countries
+  public countries: any = countries;
   today = new Date();
-  
+  ships: Ship[] = [];
+  occupiedBoardSpace = 0;
   dd = String(this.today.getDate() + 1).padStart(2, '0');
   dd2 = String(this.today.getDate() + 2).padStart(2, '0');
-  mm = String(this.today.getMonth() + 1).padStart(2, '0'); 
+  mm = String(this.today.getMonth() + 1).padStart(2, '0');
   yyyy = this.today.getFullYear();
 
-  
-
-  public todayString =  this.yyyy + '-' + this.mm + '-' + this.dd;
-  public todayString2 =  this.yyyy + '-' + this.mm + '-' + this.dd2;
+  public todayString = this.yyyy + '-' + this.mm + '-' + this.dd;
+  public todayString2 = this.yyyy + '-' + this.mm + '-' + this.dd2;
 
   constructor(
     private route: ActivatedRoute,
     private eventService: EventService,
     private router: Router,
-    private dataStorageService: DataStorageService
+    private dataStorageService: DataStorageService,
+    private shipService: ShipService
   ) {}
 
   ngOnInit() {
@@ -68,6 +70,36 @@ export class EventsEditComponent implements OnInit {
    */
   onCancel() {
     this.router.navigate(['../'], { relativeTo: this.route });
+    this.ships = [];
+    this.occupiedBoardSpace = 0;
+  }
+
+  addShip() {
+    let boardSizeRestriction =
+      (this.eventForm.value.board_columns * this.eventForm.value.board_rows) /
+      2;
+
+    if (this.shipService.getShip(this.eventForm.value.ships)) {
+      let shipSize = this.shipService.ship.length + this.shipService.ship.width;
+
+      if (shipSize + this.occupiedBoardSpace < boardSizeRestriction) {
+        this.occupiedBoardSpace += shipSize;
+        this.ships.push(this.shipService.ship);
+        console.log(this.occupiedBoardSpace);
+        console.log(this.ships);
+      } else {
+        alert(
+          'La última nave que ha intentado agregar sobrepasa el límite aceptado. Actualmente sus naves ocupan un ' +
+            this.occupiedBoardSpace +
+            ' de espacio del tablero donde el total disponible es de ' +
+            boardSizeRestriction
+        );
+      }
+    } else {
+      alert(
+        "Porfavor ingrese correctamente el nombre de la nave que desea agregar"
+      );
+    }
   }
 
   /**
@@ -91,6 +123,8 @@ export class EventsEditComponent implements OnInit {
     let multiplayer = false;
     let client_name = '';
     let shooting_time = 10;
+    let ship = '';
+    let ships = [];
 
     if (this.editMode) {
       const event = this.eventService.getEvent(this.id);
@@ -106,12 +140,14 @@ export class EventsEditComponent implements OnInit {
       board_rows = event.board_rows;
       country = event.country;
       location = event.location;
+      ships = event.shipsAvailable;
+
       if (event.multiplayer == 1) {
         multiplayer = true;
       } else {
         multiplayer = false;
       }
-      
+
       client_name = event.client_name;
       shooting_time = event.shooting_time;
     }
@@ -132,7 +168,7 @@ export class EventsEditComponent implements OnInit {
       multiplayer: new FormControl(multiplayer, Validators.required),
       client_name: new FormControl(client_name),
       shooting_time: new FormControl(shooting_time, Validators.required),
-
+      ships: new FormControl(this.ships, Validators.required),
       
     });
   }
