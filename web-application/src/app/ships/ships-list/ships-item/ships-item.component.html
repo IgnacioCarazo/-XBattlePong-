@@ -5,6 +5,9 @@ routerLinkActive="active"
 class="list-group-item clearfix">
 <div class="pull-left">
   <h3 class="list-group-item-heading">{{ ship.name }} ({{ ship.length }}x{{ ship.width }})</h3>
+  <div *ngIf="ship.one_shot == 1">
+    <h6>One Shot</h6>
+  </div>
 </div>
 <span class="pull-right">
     <img
