@@ -12,6 +12,6 @@ export class Ship {
       this.width = width;
       this.image = image;
       this.one_shot = one_shot;
-      this.lives = lives;
+      this.lives = length + width;
     }
   }

@@ -2,7 +2,7 @@
   <div class="row" style="margin-top: 10px">
     <div class="col-xs-12">
       <h1>{{ event.name }}</h1>
-      <h5>Codigo de creación: {{event.event_code}}</h5>
+      <h5>Codigo de creación: {{ event.event_code }}</h5>
     </div>
   </div>
   <div style="margin-bottom: 50px" class="row">
@@ -35,11 +35,13 @@
       {{ event.final_time }}
     </div>
   </div>
-  <h4 style="margin-top: 10px; margin-bottom: 20px;">Configuraciones del juego</h4>
+  <h4 style="margin-top: 10px; margin-bottom: 20px">
+    Configuraciones del juego
+  </h4>
   <div style="margin-bottom: 50px" class="row">
     <div class="col-md-6">
       <h5>Tamaño del tablero:</h5>
-      {{ event.board_rows }} X {{event.board_columns}}
+      {{ event.board_rows }} X {{ event.board_columns }}
     </div>
     <div class="col-md-6">
       <h5>Tiempo de Disparo:</h5>
@@ -57,23 +59,22 @@
     </div>
   </div>
   <hr />
-      Naves del evento:
-      <div class="row">
-        <div class="col-xs-12">
-          <ul class="list-group">
-            <li class="list-group-item" *ngFor="let ship of ships">
-              {{ ship.name }} {{ ship.length }} x {{ ship.width }}
-            </li>
-          </ul>
-        </div>
-      </div>
+  Naves del evento:
+  <div class="row">
+    <div class="col-xs-12">
+      <ul class="list-group">
+        <li class="list-group-item" *ngFor="let ship of ships">
+          {{ ship.name }} {{ ship.length }} x {{ ship.width }}
+          
+        </li>
+      </ul>
+    </div>
+  </div>
+  
 
   <div style="margin-top: 50px" class="row">
     <div style="justify-content: flex-end" class="col-xs-12">
-      <button
-        class="btn btn-danger"
-        (click)="onDeleteEvent()"
-      >
+      <button class="btn btn-danger" (click)="onDeleteEvent()">
         Eliminar Evento
       </button>
     </div>
