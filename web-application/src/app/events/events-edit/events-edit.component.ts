@@ -54,13 +54,12 @@ export class EventsEditComponent implements OnInit {
     } else {
       this.eventForm.value.multiplayer = 0;
     }
-    if (this.editMode) {
-      //this.dataStorageService.updateCancion(this.cancionForm.value);
-    } else {
-      //this.dataStorageService.storeSong(this.cancionForm.value);
-    }
-    this.dataStorageService.storeEvent(this.eventForm.value);
+    this.eventForm.value.number = 0;
+    this.eventForm.value.shipsAvailable = this.ships;
+    
+    //this.dataStorageService.storeEvent(this.eventForm.value);
     this.eventService.addEvent(this.eventForm.value);
+    console.log(this.eventForm.value);
     this.onCancel();
   }
 
@@ -74,15 +73,27 @@ export class EventsEditComponent implements OnInit {
     this.occupiedBoardSpace = 0;
   }
 
+  removeShip() {
+    for (let ship of this.ships.reverse()) {
+      if (ship.name === this.eventForm.value.number) {
+        let index = this.ships.indexOf(this.eventForm.value.number);
+        this.ships.reverse().splice(index, 1);
+        return true;
+      } else {
+        alert('Ingrese el nombre de una nave existente');
+      }
+    }
+  }
+
   addShip() {
     let boardSizeRestriction =
       (this.eventForm.value.board_columns * this.eventForm.value.board_rows) /
       2;
 
-    if (this.shipService.getShip(this.eventForm.value.ships)) {
+    if (this.shipService.getShip(this.eventForm.value.shipsAvailable)) {
       let shipSize = this.shipService.ship.length + this.shipService.ship.width;
 
-      if (shipSize + this.occupiedBoardSpace < boardSizeRestriction) {
+      if (shipSize + this.occupiedBoardSpace <= boardSizeRestriction) {
         this.occupiedBoardSpace += shipSize;
         this.ships.push(this.shipService.ship);
         console.log(this.occupiedBoardSpace);
@@ -96,9 +107,7 @@ export class EventsEditComponent implements OnInit {
         );
       }
     } else {
-      alert(
-        "Porfavor ingrese correctamente el nombre de la nave que desea agregar"
-      );
+      alert('Ingrese el nombre de una nave existente');
     }
   }
 
@@ -108,7 +117,7 @@ export class EventsEditComponent implements OnInit {
    * it will just set thes values 'empty' for the user to fill.
    */
   private initForm() {
-    let number = 0;
+    let number: any;
     let event_key = '';
     let event_code = '';
     let name = '';
@@ -123,8 +132,7 @@ export class EventsEditComponent implements OnInit {
     let multiplayer = false;
     let client_name = '';
     let shooting_time = 10;
-    let ship = '';
-    let ships = [];
+    let shipsAvailable = [];
 
     if (this.editMode) {
       const event = this.eventService.getEvent(this.id);
@@ -140,8 +148,8 @@ export class EventsEditComponent implements OnInit {
       board_rows = event.board_rows;
       country = event.country;
       location = event.location;
-      ships = event.shipsAvailable;
-
+      shipsAvailable = event.shipsAvailable;
+      this.ships = shipsAvailable;
       if (event.multiplayer == 1) {
         multiplayer = true;
       } else {
@@ -150,8 +158,10 @@ export class EventsEditComponent implements OnInit {
 
       client_name = event.client_name;
       shooting_time = event.shooting_time;
+    } else {
+      number = '';
     }
-
+    
     this.eventForm = new FormGroup({
       number: new FormControl(number),
       name: new FormControl(name, Validators.required),
@@ -168,8 +178,7 @@ export class EventsEditComponent implements OnInit {
       multiplayer: new FormControl(multiplayer, Validators.required),
       client_name: new FormControl(client_name),
       shooting_time: new FormControl(shooting_time, Validators.required),
-      ships: new FormControl(this.ships, Validators.required),
-      
+      shipsAvailable: new FormControl(this.ships, Validators.required),
     });
   }
 }
