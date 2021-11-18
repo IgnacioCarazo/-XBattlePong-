@@ -13,6 +13,7 @@ export class EventsDetailComponent implements OnInit {
   event: ClassEvent;
   id: number;
   mode: string;
+  ships = [];
 
   constructor(
     private eventService: EventService,
@@ -31,6 +32,7 @@ export class EventsDetailComponent implements OnInit {
       if (this.event.multiplayer == 1) {
         this.mode = 'Multijugador';
       }
+      this.ships = this.event.shipsAvailable;
     });
 
     
