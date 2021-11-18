@@ -20,6 +20,7 @@ export class EventsEditComponent implements OnInit {
   today = new Date();
   ships: Ship[] = [];
   occupiedBoardSpace = 0;
+  maxNumberShips = 0;
   dd = String(this.today.getDate() + 1).padStart(2, '0');
   dd2 = String(this.today.getDate() + 2).padStart(2, '0');
   mm = String(this.today.getMonth() + 1).padStart(2, '0');
@@ -41,6 +42,7 @@ export class EventsEditComponent implements OnInit {
       this.id = +params['id'];
       this.editMode = params['id'] != null;
       this.initForm();
+      this.maxNumberShips = (this.eventForm.value.board_columns * this.eventForm.value.board_rows) / 2;
     });
   }
 
@@ -56,7 +58,7 @@ export class EventsEditComponent implements OnInit {
     }
     this.eventForm.value.number = 0;
     this.eventForm.value.shipsAvailable = this.ships;
-    
+
     //this.dataStorageService.storeEvent(this.eventForm.value);
     this.eventService.addEvent(this.eventForm.value);
     console.log(this.eventForm.value);
@@ -73,19 +75,34 @@ export class EventsEditComponent implements OnInit {
     this.occupiedBoardSpace = 0;
   }
 
+  /**
+   * @name removeShip()
+   * @description Elimina una nave de la lista de naves de un evento
+   */
   removeShip() {
+    let flag  = false;
     for (let ship of this.ships.reverse()) {
       if (ship.name === this.eventForm.value.number) {
         let index = this.ships.indexOf(this.eventForm.value.number);
         this.ships.reverse().splice(index, 1);
-        return true;
-      } else {
-        alert('Ingrese el nombre de una nave existente');
-      }
+        let shipSize = this.shipService.ship.length + this.shipService.ship.width;
+        this.occupiedBoardSpace -= shipSize;
+        flag = true
+        break
+      } 
+    }
+    if (flag == false) {
+      alert('Ingrese el nombre de una nave existente');
+      
     }
   }
 
+  /**
+   * @name addShip()
+   * @description Agrega una nave a la lista de naves del evento
+   */
   addShip() {
+    this.maxNumberShips = (this.eventForm.value.board_columns * this.eventForm.value.board_rows) / 2;
     let boardSizeRestriction =
       (this.eventForm.value.board_columns * this.eventForm.value.board_rows) /
       2;
@@ -96,8 +113,6 @@ export class EventsEditComponent implements OnInit {
       if (shipSize + this.occupiedBoardSpace <= boardSizeRestriction) {
         this.occupiedBoardSpace += shipSize;
         this.ships.push(this.shipService.ship);
-        console.log(this.occupiedBoardSpace);
-        console.log(this.ships);
       } else {
         alert(
           'La última nave que ha intentado agregar sobrepasa el límite aceptado. Actualmente sus naves ocupan un ' +
@@ -161,7 +176,7 @@ export class EventsEditComponent implements OnInit {
     } else {
       number = '';
     }
-    
+
     this.eventForm = new FormGroup({
       number: new FormControl(number),
       name: new FormControl(name, Validators.required),

@@ -22,12 +22,10 @@ const routes: Routes = [
       {
         path: ':id',
         component: EventsDetailComponent,
-        resolve: [EventsResolver],
       },
       {
         path: ':id/edit',
         component: EventsEditComponent,
-        resolve: [EventsResolver],
       },
     ],
   },
