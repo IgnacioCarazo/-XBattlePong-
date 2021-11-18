@@ -49,7 +49,7 @@ export class MatchesListComponent implements OnInit {
     this.event_found = this.eventService.searchEvent(this.event_key);
     if (this.event_found) {
       this.event = this.eventService.getCurrentEvent();
-      this.dataStorageService
+       this.dataStorageService
         .fetchMatches(this.event_key)
         .subscribe((matches) => {
           this.matches = matches;

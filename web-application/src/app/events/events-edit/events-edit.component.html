@@ -233,6 +233,31 @@
           </div>
         </div>
       </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <label style="margin-top: 10px" for="ships">Naves</label>
+            <input
+              placeholder="Inserte el nombre de la nave.."
+              style="width: 380px"
+              type="text"
+              id="ships"
+              formControlName="ships"
+              class="form-control"
+              required
+            />
+          </div>
+          <button
+          style="margin-left: 5px; margin-top: 10px;"
+          type="button"
+          class="btn btn-success"
+          (click)="addShip()"
+        >
+          Agregar
+        </button>
+        </div>
+        
+      </div>
       <div style="margin-bottom: 20px; margin-top: 20px" class="row">
         <div class="col-xs-12">
           <button

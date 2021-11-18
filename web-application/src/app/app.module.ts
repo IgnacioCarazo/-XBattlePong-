@@ -20,6 +20,11 @@ import { MatchesDetailComponent } from './matches/matches-detail/matches-detail.
 import { MatchesEditComponent } from './matches/matches-edit/matches-edit.component';
 import { MatchService } from './services/match.service';
 import { UserService } from './services/user.service';
+import { ShipsComponent } from './ships/ships.component';
+import { ShipsDetailComponent } from './ships/ships-detail/ships-detail.component';
+import { ShipsListComponent } from './ships/ships-list/ships-list.component';
+import { ShipsItemComponent } from './ships/ships-list/ships-item/ships-item.component';
+import { ShipService } from './services/ship.service';
 
 
 @NgModule({
@@ -36,7 +41,11 @@ import { UserService } from './services/user.service';
     MatchesListComponent,
     MatchesItemComponent,
     MatchesDetailComponent,
-    MatchesEditComponent
+    MatchesEditComponent,
+    ShipsComponent,
+    ShipsDetailComponent,
+    ShipsListComponent,
+    ShipsItemComponent
   ],
   imports: [
     BrowserModule,
@@ -45,7 +54,7 @@ import { UserService } from './services/user.service';
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [EventService, MatchService, UserService],
+  providers: [EventService, MatchService, UserService, ShipService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
