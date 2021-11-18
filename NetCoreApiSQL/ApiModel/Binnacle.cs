@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace ApiModel
 {
+    /// <summary>
+    /// Entidad binnacle (bitacora) con sus respectivos atributos
+    /// </summary>
     public class Binnacle
     {
         public int id { get; set; }

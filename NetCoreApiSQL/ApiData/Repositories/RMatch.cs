@@ -51,10 +51,7 @@ namespace ApiData.Repositories
 
             var result = await db.QueryAsync<Match>(sql, new {event_key = event_key});
 
-            if (result == null)
-            {
-                result = new List<Match>();
-            }
+
             return result;
         }
 

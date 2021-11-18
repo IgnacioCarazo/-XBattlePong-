@@ -17,6 +17,7 @@ namespace ApiData.Interfaces
         Task<bool> InsertEvent(Event evnt);
         Task<bool> DeleteEvent(string event_key);
         Task<bool> UpdateEvent(Event evnt);
+        Task<bool> InsertEventShip(EventShip eventShip);
     }
 
 }

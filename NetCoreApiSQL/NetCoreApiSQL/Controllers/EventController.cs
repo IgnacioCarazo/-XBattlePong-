@@ -1,4 +1,5 @@
-﻿using ApiData.Interfaces;
+﻿using ApiData.DataManagment;
+using ApiData.Interfaces;
 using ApiModel;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -65,6 +66,18 @@ namespace NetCoreApiSQL.Controllers
                 return BadRequest(ModelState);
             }
 
+            evnt.event_key = EventManagment.eventKey();
+
+
+            foreach (var ship in evnt.shipAvailable)
+            {
+                EventShip eventShip = new EventShip();
+                eventShip.event_key = evnt.event_key;
+                eventShip.ship_name = ship.name;
+                await _ievent.InsertEventShip(eventShip);
+            }
+
+            
             await _ievent.InsertEvent(evnt);
 
             return Ok(await _ievent.GetAllEvents());
