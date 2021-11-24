@@ -11,6 +11,8 @@
 using System;
 using System.Reflection;
 
+[assembly: System.Runtime.CompilerServices.InternalsVisibleTo("UnitTest.Tests")]
+[assembly: System.Runtime.CompilerServices.InternalsVisibleToAttribute("DynamicProxyGenAssembly2")]
 [assembly: System.Reflection.AssemblyCompanyAttribute("UnitTest")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
