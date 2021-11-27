@@ -57,9 +57,9 @@ export class EventsEditComponent implements OnInit {
       this.eventForm.value.multiplayer = 0;
     }
     this.eventForm.value.number = 0;
-    this.eventForm.value.shipsAvailable = this.ships;
+    this.eventForm.value.shipAvailable = this.ships;
 
-    //this.dataStorageService.storeEvent(this.eventForm.value);
+    this.dataStorageService.storeEvent(this.eventForm.value);
     this.eventService.addEvent(this.eventForm.value);
     console.log(this.eventForm.value);
     this.onCancel();
@@ -107,7 +107,7 @@ export class EventsEditComponent implements OnInit {
       (this.eventForm.value.board_columns * this.eventForm.value.board_rows) /
       2;
 
-    if (this.shipService.getShip(this.eventForm.value.shipsAvailable)) {
+    if (this.shipService.getShip(this.eventForm.value.shipAvailable)) {
       let shipSize = this.shipService.ship.length + this.shipService.ship.width;
 
       if (shipSize + this.occupiedBoardSpace <= boardSizeRestriction) {
@@ -147,7 +147,7 @@ export class EventsEditComponent implements OnInit {
     let multiplayer = false;
     let client_name = '';
     let shooting_time = 10;
-    let shipsAvailable = [];
+    let shipAvailable = [];
 
     if (this.editMode) {
       const event = this.eventService.getEvent(this.id);
@@ -163,8 +163,8 @@ export class EventsEditComponent implements OnInit {
       board_rows = event.board_rows;
       country = event.country;
       location = event.location;
-      shipsAvailable = event.shipsAvailable;
-      this.ships = shipsAvailable;
+      shipAvailable = event.shipAvailable;
+      this.ships = shipAvailable;
       if (event.multiplayer == 1) {
         multiplayer = true;
       } else {
@@ -193,7 +193,7 @@ export class EventsEditComponent implements OnInit {
       multiplayer: new FormControl(multiplayer, Validators.required),
       client_name: new FormControl(client_name),
       shooting_time: new FormControl(shooting_time, Validators.required),
-      shipsAvailable: new FormControl(this.ships, Validators.required),
+      shipAvailable: new FormControl(this.ships, Validators.required),
     });
   }
 }
