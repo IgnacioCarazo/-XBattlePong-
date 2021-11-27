@@ -370,3 +370,5 @@ C:\Users\josep\Documents\RepoXBattle - Work\-XBattlePong-\UnitTest\obj\Debug\net
 C:\Users\josep\Documents\RepoXBattle - Work\-XBattlePong-\UnitTest\obj\Debug\net5.0\ref\UnitTest.dll
 C:\Users\josep\Documents\RepoXBattle - Work\-XBattlePong-\UnitTest\obj\Debug\net5.0\UnitTest.pdb
 C:\Users\josep\Documents\RepoXBattle - Work\-XBattlePong-\UnitTest\obj\Debug\net5.0\UnitTest.genruntimeconfig.cache
+C:\Users\josep\Documents\RepoXBattle - Work\-XBattlePong-\UnitTest\bin\Debug\net5.0\Castle.Core.dll
+C:\Users\josep\Documents\RepoXBattle - Work\-XBattlePong-\UnitTest\bin\Debug\net5.0\Moq.dll
